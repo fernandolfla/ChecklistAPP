@@ -26,6 +26,7 @@ namespace ChecklistAPP.Views
             IsPresented = false;
 
             MasterPage.ListView.SelectedItem = null;
+
         }
 
 
