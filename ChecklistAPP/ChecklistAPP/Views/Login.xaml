@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ChecklistAPP.Views.Login">
+
+
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical" Padding="30" Spacing="10">
+            <BoxView HeightRequest="10"/>
+
+            <Image HorizontalOptions="Center" WidthRequest="180" Source="user.png"/>
+            
+            <Frame BackgroundColor="#BF043055" HasShadow="False">
+                
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Entry x:Name="txtUsuario" Text="{Binding Usuario}" Placeholder="Usuário" 
+                           PlaceholderColor="White" HeightRequest="40"  
+                           MaxLength="20"
+                           TextColor="White"/>
+                    <Entry x:Name="txtSenha" Text="{Binding Senha}" Placeholder="Senha" 
+                           PlaceholderColor="White" HeightRequest="40" 
+                           IsPassword="True"
+                           MaxLength="8"
+                           TextColor="White"/>
+                </StackLayout>
+                
+            </Frame>
+            <Button Command="{Binding SubmitCommand}" Text="Login" TextColor="White"
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"
+                    Clicked="Button_Clicked"
+                    BackgroundColor="#088da5" />
+
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
