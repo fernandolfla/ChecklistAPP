@@ -21,6 +21,8 @@ namespace ChecklistAPP.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
+            Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity = this; // PLIGIM INICIANDO
+
             UserDialogs.Init(this);   //ACR USER DIALOG NEGET
 
             LoadApplication(new App());
@@ -31,8 +33,7 @@ namespace ChecklistAPP.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
-            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);  // Plugin Permission Media nuget
-
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults); // Plugin de media fotos
         }
 
 

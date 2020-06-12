@@ -13,7 +13,7 @@
             <BoxView HeightRequest="10"/>
 
             <Image HorizontalOptions="Center" WidthRequest="180" Source="user.png"/>
-            
+
             <Frame BackgroundColor="#BF043055" HasShadow="False">
                 
                 <StackLayout Orientation="Vertical" Spacing="10">
