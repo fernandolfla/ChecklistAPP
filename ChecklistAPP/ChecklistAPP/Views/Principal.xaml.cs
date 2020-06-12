@@ -29,8 +29,5 @@ namespace ChecklistAPP.Views
 
         }
 
-
-
-
     }
 }

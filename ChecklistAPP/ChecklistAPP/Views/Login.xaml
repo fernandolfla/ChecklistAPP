@@ -32,6 +32,7 @@
             <Button Command="{Binding SubmitCommand}" Text="Login" TextColor="White"
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"
                     Clicked="Button_Clicked"
+                    BorderRadius="20" 
                     BackgroundColor="#088da5" />
 
         </StackLayout>
