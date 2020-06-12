@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ChecklistAPP.Views.CheckChaves">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Página CheckChaves"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="Verifique as chaves"/>
+            <ListView 
+            x:Name="listChaves">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal">
+                                    <Label 
+                            Text="{Binding Nome}"
+                            Font="11" 
+                            TextColor="Black"
+                            HorizontalOptions="Start" 
+                            VerticalOptions="Center"/>
+
+                                    <Switch 
+                            HorizontalOptions="EndAndExpand"
+                            VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Command="{Binding SubmitCommand}" Text="Próximo" TextColor="White"
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill"
+                    Clicked="Button_Clicked"
+                    BackgroundColor="#088da5" 
+                    HeightRequest="60" 
+                     BorderRadius="20"
+                     VerticalOptions="End"
+                                />
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

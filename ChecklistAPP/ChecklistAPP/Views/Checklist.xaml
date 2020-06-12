@@ -5,11 +5,73 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ChecklistAPP.Views.Checklist">
-    <ContentPage.Content>
+   
+
+    
+    
         <StackLayout>
-            <Label Text="Página de Checklist"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+        <Label Text="Veículo"/>
+        <Picker Title="Selecione o Veículo"  x:Name="picVeiculos"
+        TitleColor="Red"
+        ItemDisplayBinding="{Binding Placa}"
+        SelectedItem="{Binding SelectedVeiculo}" />
+
+        <Label Text="Selecione a Área"/>
+        <Picker Title="Selecione a Área"  x:Name="picAreas"
+        TitleColor="Blue"
+        ItemDisplayBinding="{Binding Nome}"
+        SelectedItem="{Binding SelectedArea}" />
+
+        <Label Text="Verifique os itens no veículo"/>
+        <ListView 
+            x:Name="listItens">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal">
+                                <Label 
+                            Text="{Binding Nome}"
+                            Font="11" 
+                            TextColor="Black"
+                            HorizontalOptions="Start" 
+                            VerticalOptions="Center"/>
+
+                                <Switch 
+                            HorizontalOptions="EndAndExpand"
+                            VerticalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+        <Button Command="{Binding SubmitCommand}" Text="Próximo" TextColor="White"
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill"
+                    Clicked="Button_Clicked"
+                    BackgroundColor="#088da5" 
+                    HeightRequest="60" 
+                     BorderRadius="20"
+                     VerticalOptions="End"
+                                />
+    </StackLayout>
+
+   
+
+    <!--
+        <ListView x:Name="listaVeiculos"
+            CachingStrategy="RecycleElement">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ImageCell Text="{Binding Placa}" Detail="{Binding Modelo}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+        -->
+    
+    
 </ContentPage>
