@@ -10,7 +10,9 @@
             <Label Text="Página para tirar fotos e anexar"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-
+            
+            <Image x:Name="ImageView" HeightRequest="400" WidthRequest="400"></Image>
+            <Button Text="Tirar Foto"  Clicked="TakeFotoButton_OnClicked"></Button>
 
 
             <Button Command="{Binding SubmitCommand}" Text="Enviar Checklist" TextColor="White"

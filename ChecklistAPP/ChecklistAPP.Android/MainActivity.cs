@@ -1,12 +1,10 @@
-﻿using System;
-
+﻿
+using Acr.UserDialogs;
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
-using Acr.UserDialogs;
+using Android.Runtime;
+using Plugin.Permissions;
 
 namespace ChecklistAPP.Droid
 {
@@ -32,6 +30,11 @@ namespace ChecklistAPP.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);  // Plugin Permission Media nuget
+
         }
+
+
     }
 }
