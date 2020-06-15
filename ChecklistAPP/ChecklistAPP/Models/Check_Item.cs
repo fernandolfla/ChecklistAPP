@@ -6,6 +6,10 @@ namespace ChecklistAPP.Models
 {
     public class Check_Item
     {
+        public Check_Item()
+        {
+            Ativo = true;
+        }
         public int Id { get; set; }
         public bool Ativo { get; set; }
         public int CheckId { get; set; }

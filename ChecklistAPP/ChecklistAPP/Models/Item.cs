@@ -9,5 +9,6 @@ namespace ChecklistAPP.Models
         public int Id { get; set; }
         public bool Ativo { get; set; }
         public string Nome { get; set; }
+        public int posicao { get; set; }
     }
 }

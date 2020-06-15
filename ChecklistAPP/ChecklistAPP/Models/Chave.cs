@@ -8,6 +8,7 @@ namespace ChecklistAPP.Models
         public string Nome { get; set; }
         public int AreaId { get; set; }
         public Area Area { get; set; }
+        public int posicao { get; set; }
 
     }
 }

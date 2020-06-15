@@ -6,6 +6,12 @@ namespace ChecklistAPP.Models
 {
     public class Check
     {
+        public Check()
+        {
+            Ativo = true;
+            Encerrado = false;
+            Datainicio = DateTime.Now;
+        }
         public int Id { get; set; }
         public bool Ativo { get; set; }
         public int AreaId { get; set; }
@@ -25,8 +31,6 @@ namespace ChecklistAPP.Models
         public List<Check_Item> Items { get; set; }
         public List<Check_Chaves> Chaves { get; set; }
         public List<Check_Foto> Fotos { get; set; }
-
-
 
     }
 }

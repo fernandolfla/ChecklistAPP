@@ -1,5 +1,6 @@
 ﻿using ChecklistAPP.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -170,8 +171,53 @@ namespace ChecklistAPP.Services
 
         }
 
+        public static async Task<Resposta> Salvar(Token token, Check check)
+        {
+            if (token == null)
+                if (!token.logado)
+                    return null;
 
-       
+            JsonConvert.SerializeObject(check, Formatting.None,
+                        new JsonSerializerSettings()
+                        {
+                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                            ContractResolver = new CamelCasePropertyNamesContractResolver()
+                        });
+
+            //criado uma instancia de um httpclient
+            var httpClient = new HttpClient();
+            // Faz a validação via token JWT
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.access_token);
+            //utilizado o nuget package para Newton Soft para fazer a conversao do formato JSON para C#
+            var json = JsonConvert.SerializeObject(check);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            // Coloca o Usuário no Header
+            content.Headers.Add("Usuario", token.Usuario.Id.ToString());
+            //content.Headers.Add("Authorization", "Bearer " + token.access_token);
+
+            //Criando o método post que sera responsável por nosso registro de usuários na API
+            HttpResponseMessage resposta = null;
+            try
+            {
+                resposta = await httpClient.PostAsync(AppSettings.ApiUrl + "api/check/salvar", content);
+            }
+            catch (Exception ex)
+            {
+                ResponseMessage.StatusCode = HttpStatusCode.InternalServerError;
+                ResponseMessage.ReasonPhrase = string.Format("RestHttpClient.SendRequest failed: {0}", ex);
+            }
+
+            if (!resposta.IsSuccessStatusCode)
+                return null;
+
+            var jsonResult = await resposta.Content.ReadAsStringAsync();
+            Resposta result = JsonConvert.DeserializeObject<Resposta>(jsonResult);
+
+            return result;
+
+        }
+
+        
 
 
 

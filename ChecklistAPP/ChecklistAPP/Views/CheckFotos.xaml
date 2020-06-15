@@ -6,22 +6,30 @@
              mc:Ignorable="d"
              x:Class="ChecklistAPP.Views.CheckFotos">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Página para tirar fotos e anexar"
+        <StackLayout Orientation="Vertical" Padding="20" Spacing="10">
+           
+            <Label Text="Tire fotos do veículo"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             
             <Image x:Name="ImageView" HeightRequest="400" WidthRequest="400"></Image>
-            <Button Text="Tirar Foto"  Clicked="TakeFotoButton_OnClicked"></Button>
-
-
-            <Button Command="{Binding SubmitCommand}" Text="Enviar Checklist" TextColor="White"
+            
+            <Button Text="Tirar Foto"  Clicked="TakeFotoButton_OnClicked" 
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill"
-                    Clicked="Button_Clicked"
                     BackgroundColor="#088da5" 
                     HeightRequest="60" 
-                     BorderRadius="20"
-                     VerticalOptions="End"
+                    BorderRadius="20"
+                    VerticalOptions="End"
+                    TextColor="Black"
+                    />
+
+            <Button Command="{Binding SubmitCommand}" Text="Enviar Checklist" TextColor="White" x:Name="btnEnviar"
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill"
+                    Clicked="btnEnviar_Clicked"
+                    BackgroundColor="#0851B1" 
+                    HeightRequest="60" 
+                    BorderRadius="20"
+                    VerticalOptions="End"
                                 />
         </StackLayout>
     </ContentPage.Content>

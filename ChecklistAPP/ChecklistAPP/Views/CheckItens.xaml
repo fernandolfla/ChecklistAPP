@@ -4,21 +4,20 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="ChecklistAPP.Views.CheckChaves">
+             x:Class="ChecklistAPP.Views.CheckItens">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Padding="30" Spacing="10">
-
-            <Label Text="Verifique as chaves da Área "  TextColor="Red" FontSize="Large" />
-            <Label x:Name="labelArea" TextColor="Red" FontSize="Large" />
-            <ListView SeparatorVisibility = "None" RowHeight="60" x:Name="listChaves"  SelectionMode="None" >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <StackLayout Padding = "20"
+    <StackLayout Orientation="Vertical" Padding="30" Spacing="10">
+        
+            <Label Text="Verifique os Itens do Checklist e Ative os itens que estão 100%"  TextColor="Red" FontSize="Large" />
+            <ListView SeparatorVisibility = "None" RowHeight="60"  SelectionMode="None" x:Name="listItens">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Padding = "20"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal">
-                                    <Label
+                                <Label
                             Text = "{Binding Nome}"
                             Font="12" 
                             TextColor="Black"
@@ -26,16 +25,16 @@
                             VerticalOptions="Center"
                             FontSize="Medium"        
                                     />
-                                    <Switch  x:Name="chaveSwitch" x:DataType="ListView"  Toggled="MyToggledEventHandler"  
+                                <Switch  x:Name="itemSwitch" x:DataType="ListView"  Toggled="MyToggledEventHandler"  
                             HorizontalOptions = "EndAndExpand"
                             VerticalOptions="CenterAndExpand"/>
-                                </StackLayout>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+        
             <Button Command="{Binding SubmitCommand}" Text="Próximo" TextColor="White"
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill" VerticalOptions="End"
                     Clicked="btnProximo_Clicked"
