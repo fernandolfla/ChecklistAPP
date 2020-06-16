@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Acr.UserDialogs;
+using ChecklistAPP.Models;
+using ChecklistAPP.Services;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace ChecklistAPP.Views
@@ -16,11 +14,13 @@ namespace ChecklistAPP.Views
         public PrincipalDetail()
         {
             InitializeComponent();
+
         }
 
-        private async void btnSair_Clicked(object sender, EventArgs e)
+        private void btnSair_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Checklist());
+            AppSettings.Token = null;
+            Application.Current.MainPage = new NavigationPage(new Login());
         }
     }
 }

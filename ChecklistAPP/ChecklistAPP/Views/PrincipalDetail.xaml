@@ -7,14 +7,17 @@
              x:Class="ChecklistAPP.Views.PrincipalDetail"
              Title="JURICHECK - Mobile">
   <StackLayout Padding="10">
-        <Label Text="Essa é a página inicial, vou por o logo da empresa aqui e um botão de Saír"/>
-
-        <Label Padding="200"/>
       
+        <Label Text="Bem Vindo ao JuriCheCk - Utilize o Menu no canto superior esquerdo para navegar!" FontSize="Medium"/>
+        <Label Text="Aplicativo para controle dos veículos" FontSize="Medium" Padding="100" />
+        
+        
+        
+
         <Button Command="{Binding SubmitCommand}" Text="Saír" TextColor="White" x:Name="btnSair"
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill"
                     Clicked="btnSair_Clicked"
-                    BackgroundColor="#088da5" 
+                    BackgroundColor="#ED7038" 
                     HeightRequest="60" 
                      BorderRadius="20"
                      VerticalOptions="End"

@@ -14,10 +14,9 @@ namespace ChecklistAPP.Views
         public Login()
         {
             InitializeComponent();
-
-        
+           
         }
-        
+
         private void Button_Clicked(object sender, EventArgs e)
         {
 
