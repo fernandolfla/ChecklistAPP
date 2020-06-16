@@ -177,12 +177,17 @@ namespace ChecklistAPP.Services
                 if (!token.logado)
                     return null;
 
-            JsonConvert.SerializeObject(check, Formatting.None,
-                        new JsonSerializerSettings()
-                        {
-                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                            ContractResolver = new CamelCasePropertyNamesContractResolver()
-                        });
+
+            //Corrigir erros de serialização de lista dentro de objetos
+            //JsonConvert.SerializeObject(check, Formatting.None,
+            //            new JsonSerializerSettings()
+            //            {
+            //                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            //                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            //            });
+
+           
+
 
             //criado uma instancia de um httpclient
             var httpClient = new HttpClient();

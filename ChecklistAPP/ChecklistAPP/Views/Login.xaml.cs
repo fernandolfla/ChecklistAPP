@@ -15,9 +15,9 @@ namespace ChecklistAPP.Views
         {
             InitializeComponent();
 
-            
+        
         }
-
+        
         private void Button_Clicked(object sender, EventArgs e)
         {
 
@@ -46,8 +46,6 @@ namespace ChecklistAPP.Views
                         resposta.Ok = true;
                         //await Navigation.PushModalAsync(new Principal()); // Assim da para voltar
                         Navigation.InsertPageBefore(new Principal(), this);
-                        //await Navigation.PushModalAsync(new Principal());
-                        //Navigation.RemovePage(this);
                         await Navigation.PopAsync();
                         Dialog.Dispose();
                         return resposta;
@@ -59,3 +57,10 @@ namespace ChecklistAPP.Views
         }
     }
 }
+
+
+//Correção de uma página dentro de outra
+//      public async Task NagateToMain()
+//{
+//    MVVMApp.App.Current.MainPage = new Views.MainView();
+//}

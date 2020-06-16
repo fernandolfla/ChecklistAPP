@@ -15,6 +15,7 @@ namespace ChecklistAPP.Models
         public int CheckId { get; set; }
         public Check Check { get; set; }
         public byte[] Foto { get; set; }
+        public string FotoString { get; set; }
 
 
         //public class MyModel                //Método para pegar a foto do celular tipo do arquivo

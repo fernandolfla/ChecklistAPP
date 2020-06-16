@@ -5,13 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ChecklistAPP.Views.PrincipalDetail"
-             Title="Check List Juriseg">
+             Title="JURICHECK - Mobile">
   <StackLayout Padding="10">
         <Label Text="Essa é a página inicial, vou por o logo da empresa aqui e um botão de Saír"/>
-       
-      <Button Command="{Binding SubmitCommand}" Text="Saír" TextColor="White"
+
+        <Label Padding="200"/>
+      
+        <Button Command="{Binding SubmitCommand}" Text="Saír" TextColor="White" x:Name="btnSair"
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill"
-                    Clicked="Button_Clicked"
+                    Clicked="btnSair_Clicked"
                     BackgroundColor="#088da5" 
                     HeightRequest="60" 
                      BorderRadius="20"

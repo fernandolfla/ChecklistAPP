@@ -41,15 +41,19 @@ namespace ChecklistAPP.Views
 
 			var file = await media.TakePhotoAsync(new StoreCameraMediaOptions
 			{
+				//SaveToAlbum = true,
+				PhotoSize = PhotoSize.Small,
+				CompressionQuality = 90,
 				Name = "juricheck" + DateTime.Now.ToString()
 			});
 			ImageView.Source = file.Path; // Retorna o caminho da imagem.
 
-			//Image foto = ImageView;	
+
 			//Converte a foto em byte para guaradar no banco
 			byte[] img = File.ReadAllBytes(file.Path);
+			string strimg = Convert.ToBase64String(img);
 			//Adiciona na lista de checks a foto
-			fotos.Add(new Check_Foto { Foto = img });
+			fotos.Add(new Check_Foto { FotoString = strimg });
 			//ImageSource.FromStream(() => new MemoryStream(Foto_em_byte));   //byte  para imagem
 
 		}
@@ -70,7 +74,7 @@ namespace ChecklistAPP.Views
 
         private async void btnEnviar_Clicked(object sender, EventArgs e)
         {
-			var Dialog = UserDialogs.Instance.Loading("Logando... Aguarde", null, null, true, MaskType.Black);
+			var Dialog = UserDialogs.Instance.Loading("Enviando... Aguarde", null, null, true, MaskType.Black);
 			Dialog.Show();
 
 			if (fotos != null)
@@ -84,6 +88,11 @@ namespace ChecklistAPP.Views
                     {
 						DependencyService.Get<IMessage>().LongAlert("Checklist Salvo com Sucesso");
 						btnEnviar.IsEnabled = false;
+						btnFoto.IsEnabled = false;
+						await Navigation.PopToRootAsync();
+
+
+
 					}
 					else DependencyService.Get<IMessage>().LongAlert("Erro ao salvar");
 			}

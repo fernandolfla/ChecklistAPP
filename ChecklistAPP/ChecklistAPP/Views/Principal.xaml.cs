@@ -20,9 +20,12 @@ namespace ChecklistAPP.Views
                 return;
 
             var page = (Page)Activator.CreateInstance(item.TargetType);
+
+            Navigation.PushAsync(page);
+
             page.Title = item.Title;
 
-            Detail = new NavigationPage(page);
+            //Detail = new NavigationPage(page);
             IsPresented = false;
 
             MasterPage.ListView.SelectedItem = null;
