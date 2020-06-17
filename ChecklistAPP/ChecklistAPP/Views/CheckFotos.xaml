@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Padding="20" Spacing="10">
            
-            <Label Text="Tire fotos do veículo"
+            <Label Text="Tire fotos do veículo" FontSize="Medium" TextColor="BlanchedAlmond"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             

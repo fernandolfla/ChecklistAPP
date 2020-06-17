@@ -5,42 +5,41 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ChecklistAPP.Views.Problemas">
-  <ListView x:Name="MyListView"
-            ItemsSource="{Binding Items}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
-    <d:ListView.ItemsSource>
-        <x:Array Type="{x:Type x:String}">
-            <x:String>Item 1</x:String>
-            <x:String>Item 2</x:String>
-            <x:String>Item 3</x:String>
-            <x:String>Item 4</x:String>
-            <x:String>Item 5</x:String>
-        </x:Array>
-    </d:ListView.ItemsSource>
-    <!--Built in Cells-->
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <TextCell Text="{Binding .}" d:Text="{Binding .}" />
-        </DataTemplate>
-    </ListView.ItemTemplate>
-    
-    <!--Custom View Cells-->
-    <!--
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <StackLayout>
-            <Label Text="{Binding Text}" 
-                   d:Text="{Binding .}"
-                   Style="{DynamicResource ListItemTextStyle}" />
-            <Label Text="{Binding Detail}" 
-                   d:Text="Detail"
-                   Style="{DynamicResource ListItemDetailTextStyle}"/>
-          </StackLayout>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-    -->
-  </ListView>
+
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Orientation="Vertical" Padding="10" Spacing="10" >
+
+            <Label TextColor="Black" FontSize="Large" Text="Lance o Problema Encontrado" />
+
+            <Picker Title="Selecione o Veículo"  x:Name="picVeiculos"
+            TitleColor="Red" FontSize="Large"
+            ItemDisplayBinding="{Binding Placa}"
+            SelectedItem="{Binding SelectedVeiculo}" />
+
+            <Image x:Name="ImageView" HeightRequest="250" WidthRequest="250"></Image>
+
+            <Label Text="Digite o problema percebido" TextColor="Blue" FontSize="Large"   />
+            <Editor x:Name="txtProblema" FontSize="Large"  Placeholder="Problema encontrado" Keyboard="Text"  AutoSize="TextChanges"  />
+            
+            
+            <Button Command="{Binding SubmitCommand}" Text="Foto do Problema" TextColor="White"
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill" VerticalOptions="End"
+                    Clicked="btnFotoProblema_Clicked"
+                    BackgroundColor="#088da5" 
+                    HeightRequest="50" 
+                     BorderRadius="20"  />
+
+            <Button Command="{Binding SubmitCommand}" Text="Enviar" TextColor="White"
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill" VerticalOptions="End"
+                    Clicked="btnEnviar_Clicked"
+                    BackgroundColor="#088da5" 
+                    HeightRequest="50" 
+                     BorderRadius="20"  />
+
+
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
 </ContentPage>

@@ -75,7 +75,9 @@ namespace ChecklistAPP.Views
             ConvertChaves();
             _check.Chaves = check_chaves;
 
-            await Navigation.PushAsync(new CheckFotos(_check));
+            Navigation.InsertPageBefore(new CheckFotos(_check), this);
+            await Navigation.PopAsync();
+            //await Navigation.PushAsync(new CheckFotos(_check));
 
             Dialog.Dispose();
         }

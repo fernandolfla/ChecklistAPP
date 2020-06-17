@@ -67,7 +67,8 @@ namespace ChecklistAPP.Views
                     if (Texto_KM())
                     {
                         //chama a proxima tela com botão de voltar na barra superior
-                        await Navigation.PushAsync(new CheckItens(check, itens, chaves));
+                        Navigation.InsertPageBefore(new CheckItens(check, itens, chaves),this);
+                        await Navigation.PopAsync();
                     }
                     else DependencyService.Get<IMessage>().LongAlert("Você precisa Digitar o KM inicial");
                 }

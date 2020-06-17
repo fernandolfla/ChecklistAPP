@@ -6,10 +6,44 @@
              mc:Ignorable="d"
              x:Class="ChecklistAPP.Views.Manutencao">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Página de Manutenção"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical" Padding="10" Spacing="10" >
+
+            <Label TextColor="Black" FontSize="Large" Text="Lance a Manutenção Realizada" />
+
+            <Picker Title="Selecione o Veículo"  x:Name="picVeiculos"
+        TitleColor="Red" FontSize="Large"
+        ItemDisplayBinding="{Binding Placa}"
+        SelectedItem="{Binding SelectedVeiculo}" />
+
+            <Picker Title="Selecione a Oficina"  x:Name="picFornecedor"
+        TitleColor="Blue" FontSize="Large"
+        ItemDisplayBinding="{Binding Nome}"
+        SelectedItem="{Binding SelectedFornecedor}" />
+
+            <Label Text="Digite o KM do Odometro do Veículo" TextColor="Blue" FontSize="Large"/>
+            <Entry x:Name="txtKm" FontSize="Large"  MaxLength="7" Placeholder="KM" Keyboard="Numeric" />
+
+            <Label Text="Digite o valor da Manutenção" TextColor="Blue" FontSize="Large"/>
+            <Entry x:Name="txtValor" FontSize="Large"  MaxLength="20" Placeholder="Valor" Keyboard="Numeric" />
+
+            <Label Text="Digite o que foi realizado no veículo" TextColor="Blue" FontSize="Large"   />
+            <Entry x:Name="txtServico" FontSize="Large"  Placeholder="Servico Realizado" Keyboard="Text" />
+
+            <Button Command="{Binding SubmitCommand}" Text="Foto Nota" TextColor="White"
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill" VerticalOptions="End"
+                    Clicked="btnForoNota_Clicked"
+                    BackgroundColor="#088da5" 
+                    HeightRequest="50" 
+                     BorderRadius="20"  />
+
+            <Button Command="{Binding SubmitCommand}" Text="Enviar" TextColor="White"
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill" VerticalOptions="End"
+                    Clicked="btnEnviar_Clicked"
+                    BackgroundColor="#088da5" 
+                    HeightRequest="50" 
+                     BorderRadius="20"  />
+
+
         </StackLayout>
-    </ContentPage.Content>
+        </ContentPage.Content>
 </ContentPage>

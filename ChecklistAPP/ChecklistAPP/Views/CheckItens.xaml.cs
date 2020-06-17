@@ -46,7 +46,10 @@ namespace ChecklistAPP.Views
 
             ConvertItens();
             _check.Items = check_itens;
-               await Navigation.PushAsync(new CheckChaves(_check, _chaves));
+
+            Navigation.InsertPageBefore(new CheckChaves(_check, _chaves), this);
+            await Navigation.PopAsync();
+            //await Navigation.PushAsync(new CheckChaves(_check, _chaves));
 
             Dialog.Dispose();
         }

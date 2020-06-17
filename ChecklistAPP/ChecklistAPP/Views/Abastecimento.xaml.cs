@@ -6,10 +6,7 @@ using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -68,7 +65,7 @@ namespace ChecklistAPP.Views
 
         private bool Posto_Selecionado()
         {
-            if (picVeiculos.SelectedIndex >= 0)
+            if (picFornecedor.SelectedIndex >= 0)
             {
                 abastecer.FornecedorId = fornecedores[picFornecedor.SelectedIndex].Id;
                 return true;
@@ -136,8 +133,10 @@ namespace ChecklistAPP.Views
                 {
                     if (Texto_KM() && Texto_Litros() && Texto_Valor())
                     {
-                        resposta = await ApiFornecedor.Salvar(AppSettings.Token, abastecer);
-
+                        var Dialog = UserDialogs.Instance.Loading("Enviando... Aguarde", null, null, true, MaskType.Black);
+                        Dialog.Show();
+                        resposta = await ApiFornecedor.Abastecer(AppSettings.Token, abastecer);
+                        Dialog.Dispose();
                         if (resposta != null)
                             if (resposta.Ok)
                             {

@@ -9,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 namespace ChecklistAPP.Services
 {
-    public static class ApiFornecedor
+    public static class ApiProblemas
     {
         public static HttpResponseMessage ResponseMessage = new HttpResponseMessage();
 
-        public static async Task<List<Fornecedor>> Buscar(Token token)
+        public static async Task<List<Problema>> Buscar(Token token)
         {
             if (token == null)
                 if (!token.logado)
@@ -34,7 +34,7 @@ namespace ChecklistAPP.Services
             HttpResponseMessage resposta = null;
             try
             {
-                resposta = await httpClient.PostAsync(AppSettings.ApiUrl + "api/fornecedor/listar", content);
+                resposta = await httpClient.PostAsync(AppSettings.ApiUrl + "api/problema/listar", content);
             }
             catch (Exception ex)
             {
@@ -46,13 +46,14 @@ namespace ChecklistAPP.Services
                 return null;
 
             var jsonResult = await resposta.Content.ReadAsStringAsync();
-            List<Fornecedor> result = JsonConvert.DeserializeObject<List<Fornecedor>>(jsonResult);
+            List<Problema> result = JsonConvert.DeserializeObject<List<Problema>>(jsonResult);
 
             return result;
 
         }
 
-        public static async Task<Resposta> Abastecer(Token token, Abastecimento gasosa)
+        
+        public static async Task<Resposta> Salvar(Token token, Problema problema)
         {
             if (token == null)
                 if (!token.logado)
@@ -63,7 +64,7 @@ namespace ChecklistAPP.Services
             // Faz a validação via token JWT
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.access_token);
             //utilizado o nuget package para Newton Soft para fazer a conversao do formato JSON para C#
-            var json = JsonConvert.SerializeObject(gasosa);
+            var json = JsonConvert.SerializeObject(problema);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             // Coloca o Usuário no Header
             content.Headers.Add("Usuario", token.Usuario.Id.ToString());
@@ -73,7 +74,7 @@ namespace ChecklistAPP.Services
             HttpResponseMessage resposta = null;
             try
             {
-                resposta = await httpClient.PostAsync(AppSettings.ApiUrl + "api/abastecimento/salvar", content);
+                resposta = await httpClient.PostAsync(AppSettings.ApiUrl + "api/problema/salvar", content);
             }
             catch (Exception ex)
             {
@@ -91,7 +92,7 @@ namespace ChecklistAPP.Services
 
         }
 
-        public static async Task<Resposta> Manutencao(Token token, Manutencao manu)
+        public static async Task<Resposta> Atualizar(Token token, Problema problema)
         {
             if (token == null)
                 if (!token.logado)
@@ -102,7 +103,7 @@ namespace ChecklistAPP.Services
             // Faz a validação via token JWT
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.access_token);
             //utilizado o nuget package para Newton Soft para fazer a conversao do formato JSON para C#
-            var json = JsonConvert.SerializeObject(manu);
+            var json = JsonConvert.SerializeObject(problema);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             // Coloca o Usuário no Header
             content.Headers.Add("Usuario", token.Usuario.Id.ToString());
@@ -112,7 +113,7 @@ namespace ChecklistAPP.Services
             HttpResponseMessage resposta = null;
             try
             {
-                resposta = await httpClient.PostAsync(AppSettings.ApiUrl + "api/manutencao/salvar", content);
+                resposta = await httpClient.PostAsync(AppSettings.ApiUrl + "api/problema/atualizar", content);
             }
             catch (Exception ex)
             {
