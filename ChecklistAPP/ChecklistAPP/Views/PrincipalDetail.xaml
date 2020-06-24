@@ -9,10 +9,10 @@
   <StackLayout Padding="10">
       
         <Label Text="Bem Vindo ao JuriCheCk - Utilize o Menu no canto superior esquerdo para navegar!" FontSize="Medium"/>
-        <Label Text="Aplicativo para controle dos veículos" FontSize="Medium" Padding="100" />
-        
-        
-        
+        <Label Text="Aplicativo para controle dos veículos" FontSize="Medium" Padding="10" />
+
+        <Image HorizontalOptions="Center" WidthRequest="250" Source="logo_login.jpg"/>
+
 
         <Button Command="{Binding SubmitCommand}" Text="Saír" TextColor="White" x:Name="btnSair"
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill"

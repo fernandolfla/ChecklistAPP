@@ -46,16 +46,18 @@ namespace ChecklistAPP.Views
 				CompressionQuality = 90,
 				Name = "juricheck" + DateTime.Now.ToString()
 			});
-			ImageView.Source = file.Path; // Retorna o caminho da imagem.
 
-
-			//Converte a foto em byte para guaradar no banco
-			byte[] img = File.ReadAllBytes(file.Path);
-			string strimg = Convert.ToBase64String(img);
-			//Adiciona na lista de checks a foto
-			fotos.Add(new Check_Foto { FotoString = strimg });
-			//ImageSource.FromStream(() => new MemoryStream(Foto_em_byte));   //byte  para imagem
-
+			try
+			{   // Retorna o caminho da imagem.	
+				ImageView.Source = file.Path; 						  
+				//Converte a foto em byte para guaradar no banco
+				byte[] img = File.ReadAllBytes(file.Path);
+				string strimg = Convert.ToBase64String(img);
+				//Adiciona na lista de checks a foto
+				fotos.Add(new Check_Foto { FotoString = strimg });
+				//ImageSource.FromStream(() => new MemoryStream(Foto_em_byte));   //byte  para imagem
+			}
+			catch { DependencyService.Get<IMessage>().LongAlert("Foto não carregada, tente novamente"); }
 		}
 
 		private async Task GetPhotoAsync() // Pegar foto existente desabilitado por hora

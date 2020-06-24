@@ -69,6 +69,15 @@ namespace ChecklistAPP.Views
 
         }
 
+        private bool Foto_Carregada()
+        {
+            if(!string.IsNullOrEmpty(manutencao.Foto_string))
+            {
+                return true;
+            }
+            return false;
+        }
+
         private bool Texto_KM()
         {
             if (!string.IsNullOrEmpty(txtKm.Text))
@@ -109,11 +118,14 @@ namespace ChecklistAPP.Views
                 CompressionQuality = 90,
                 Name = "juricheck_NF" + DateTime.Now.ToString()
             });
-
-            byte[] img = File.ReadAllBytes(file.Path);
-            string strimg = Convert.ToBase64String(img);
-            manutencao.Foto_string = strimg;
-            DependencyService.Get<IMessage>().LongAlert("Foto da Nota Fiscal Adicionada");
+            try
+            {
+                byte[] img = File.ReadAllBytes(file.Path);
+                string strimg = Convert.ToBase64String(img);
+                manutencao.Foto_string = strimg;
+                DependencyService.Get<IMessage>().LongAlert("Foto da Nota Fiscal Adicionada");
+            }
+            catch { DependencyService.Get<IMessage>().LongAlert("Foto não carregada, tente novamente"); }
         }
 
         private async void btnForoNota_Clicked(object sender, EventArgs e)
@@ -130,19 +142,23 @@ namespace ChecklistAPP.Views
                 {
                     if (Texto_KM() && Texto_Servico() && Texto_Valor())
                     {
-                        var Dialog = UserDialogs.Instance.Loading("Enviando... Aguarde", null, null, true, MaskType.Black);
-                        Dialog.Show();
+                        if (Foto_Carregada())
+                        {
+                            var Dialog = UserDialogs.Instance.Loading("Enviando... Aguarde", null, null, true, MaskType.Black);
+                            Dialog.Show();
 
-                        resposta = await ApiFornecedor.Manutencao(AppSettings.Token, manutencao);
+                            resposta = await ApiFornecedor.Manutencao(AppSettings.Token, manutencao);
 
-                        Dialog.Dispose();
-                        if (resposta != null)
-                            if (resposta.Ok)
-                            {
-                                DependencyService.Get<IMessage>().LongAlert("Manutenção Salva com Sucesso");
-                                Inicializa();
-                            }
-                            else DependencyService.Get<IMessage>().LongAlert("Erro ao salvar");
+                            Dialog.Dispose();
+                            if (resposta != null)
+                                if (resposta.Ok)
+                                {
+                                    DependencyService.Get<IMessage>().LongAlert("Manutenção Salva com Sucesso");
+                                    Inicializa();
+                                }
+                                else DependencyService.Get<IMessage>().LongAlert("Erro ao salvar");
+                        }
+                        else DependencyService.Get<IMessage>().LongAlert("Você tirar uma foto da Nota fiscal desta manutenção");
                     }
                     else DependencyService.Get<IMessage>().LongAlert("Você precisa Digitar o KM inicial, o valor e o litro");
                 }

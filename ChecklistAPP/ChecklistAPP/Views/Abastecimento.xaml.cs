@@ -23,12 +23,7 @@ namespace ChecklistAPP.Views
         {
             InitializeComponent();
             Inicializa();
-
-           
-
         }
-
-
 
         private async void Inicializa()
         {
@@ -101,7 +96,14 @@ namespace ChecklistAPP.Views
             }
             return false;
         }
-
+        private bool Foto_Carregada()
+        {
+            if (!string.IsNullOrEmpty(abastecer.Foto_string))
+            {
+                return true;
+            }
+            return false;
+        }
         private async Task GetCameraPhotoAsync()
         {
             var media = CrossMedia.Current;
@@ -114,10 +116,14 @@ namespace ChecklistAPP.Views
                 Name = "juricheck_NF" + DateTime.Now.ToString()
             });
 
-            byte[] img = File.ReadAllBytes(file.Path);
-            string strimg = Convert.ToBase64String(img);
-            abastecer.Foto_string = strimg;
-            DependencyService.Get<IMessage>().LongAlert("Foto da Nota Fiscal Adicionada");
+            try
+            {
+                byte[] img = File.ReadAllBytes(file.Path);
+                string strimg = Convert.ToBase64String(img);
+                abastecer.Foto_string = strimg;
+                DependencyService.Get<IMessage>().LongAlert("Foto da Nota Fiscal Adicionada");
+            }
+            catch { DependencyService.Get<IMessage>().LongAlert("Foto não carregada, tente novamente"); }
         }
 
         private async void btnForoNota_Clicked(object sender, EventArgs e)
@@ -133,17 +139,21 @@ namespace ChecklistAPP.Views
                 {
                     if (Texto_KM() && Texto_Litros() && Texto_Valor())
                     {
-                        var Dialog = UserDialogs.Instance.Loading("Enviando... Aguarde", null, null, true, MaskType.Black);
-                        Dialog.Show();
-                        resposta = await ApiFornecedor.Abastecer(AppSettings.Token, abastecer);
-                        Dialog.Dispose();
-                        if (resposta != null)
-                            if (resposta.Ok)
-                            {
-                                DependencyService.Get<IMessage>().LongAlert("Abastecimento Salvo com Sucesso");
-                                Inicializa();
-                            }
-                            else DependencyService.Get<IMessage>().LongAlert("Erro ao salvar");
+                        if (Foto_Carregada())
+                        {
+                            var Dialog = UserDialogs.Instance.Loading("Enviando... Aguarde", null, null, true, MaskType.Black);
+                            Dialog.Show();
+                            resposta = await ApiFornecedor.Abastecer(AppSettings.Token, abastecer);
+                            Dialog.Dispose();
+                            if (resposta != null)
+                                if (resposta.Ok)
+                                {
+                                    DependencyService.Get<IMessage>().LongAlert("Abastecimento Salvo com Sucesso");
+                                    Inicializa();
+                                }
+                                else DependencyService.Get<IMessage>().LongAlert("Erro ao salvar");
+                        }
+                        else DependencyService.Get<IMessage>().LongAlert("Você precisa tirar uma foto da nota fiscal do abastecimento");
                     }
                     else DependencyService.Get<IMessage>().LongAlert("Você precisa Digitar o KM inicial, o valor e o litro");
                 }
