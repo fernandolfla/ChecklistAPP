@@ -14,7 +14,7 @@
         <Image HorizontalOptions="Center" WidthRequest="250" Source="logo_login.jpg"/>
 
 
-        <Button Command="{Binding SubmitCommand}" Text="Saír" TextColor="White" x:Name="btnSair"
+        <Button Command="{Binding SubmitCommand}" Text="Sair" TextColor="White" x:Name="btnSair"
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill"
                     Clicked="btnSair_Clicked"
                     BackgroundColor="#ED7038" 

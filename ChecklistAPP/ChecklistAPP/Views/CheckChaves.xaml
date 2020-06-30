@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="ChecklistAPP.Views.CheckChaves">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Padding="30" Spacing="10">
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Padding="30" Spacing="10">
 
             <Label Text="Verifique as chaves da Área "  TextColor="Red" FontSize="Large" />
             <Label x:Name="labelArea" TextColor="Red" FontSize="Large" />
@@ -15,7 +16,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
-                                <StackLayout Padding = "20"
+                                <StackLayout Padding = "15"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal">
                                     <Label
@@ -45,5 +46,6 @@
 
                                 />
         </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

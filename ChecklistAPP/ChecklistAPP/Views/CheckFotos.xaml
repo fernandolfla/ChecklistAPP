@@ -6,13 +6,14 @@
              mc:Ignorable="d"
              x:Class="ChecklistAPP.Views.CheckFotos">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Padding="20" Spacing="10">
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Padding="10" Spacing="10">
            
-            <Label Text="Tire fotos do veículo" FontSize="Medium" TextColor="BlanchedAlmond"
+            <Label Text="Tire fotos do veículo" FontSize="Medium" TextColor="Black"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             
-            <Image x:Name="ImageView" HeightRequest="400" WidthRequest="400"></Image>
+            <Image x:Name="ImageView" HeightRequest="320" WidthRequest="400"></Image>
             
             <Button Text="Tirar Foto"  Clicked="TakeFotoButton_OnClicked" x:Name="btnFoto"
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill"
@@ -32,5 +33,6 @@
                     VerticalOptions="End"
                                 />
         </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

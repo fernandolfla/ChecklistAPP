@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="ChecklistAPP.Views.CheckItens">
     <ContentPage.Content>
-    <StackLayout Orientation="Vertical" Padding="30" Spacing="10">
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Padding="30" Spacing="10">
         
             <Label Text="Verifique os Itens do Checklist e Ative os itens que estão 100%"  TextColor="Red" FontSize="Large" />
             <ListView SeparatorVisibility = "None" RowHeight="60"  SelectionMode="None" x:Name="listItens">
@@ -14,7 +15,7 @@
             <DataTemplate>
                 <ViewCell>
                     <ViewCell.View>
-                        <StackLayout Padding = "20"
+                        <StackLayout Padding = "15"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal">
                                 <Label
@@ -44,5 +45,6 @@
 
                                 />
         </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

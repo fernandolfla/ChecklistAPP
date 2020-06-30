@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="ChecklistAPP.Views.Abastecimento">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Padding="10" Spacing="10" >
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Padding="10" Spacing="10" >
 
             <Label TextColor="Black" FontSize="Large" Text="Lance o Abastecimento realizado" />
 
@@ -45,5 +46,6 @@
             
             
         </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -8,7 +8,7 @@
 
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout Orientation="Vertical" Padding="10" Spacing="10" >
+        <StackLayout Orientation="Vertical" Padding="5" Spacing="10" >
 
             <Label TextColor="Black" FontSize="Large" Text="Lance o Problema Encontrado" />
 
@@ -17,7 +17,7 @@
             ItemDisplayBinding="{Binding Placa}"
             SelectedItem="{Binding SelectedVeiculo}" />
 
-            <Image x:Name="ImageView" HeightRequest="250" WidthRequest="250"></Image>
+            <Image x:Name="ImageView" HeightRequest="180" WidthRequest="200"></Image>
 
             <Label Text="Digite o problema percebido" TextColor="Blue" FontSize="Large"   />
             <Editor x:Name="txtProblema" FontSize="Large"  Placeholder="Problema encontrado" Keyboard="Text"  AutoSize="TextChanges"  />

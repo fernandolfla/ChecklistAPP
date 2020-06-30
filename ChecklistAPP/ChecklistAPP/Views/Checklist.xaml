@@ -8,13 +8,12 @@
 
 
 
+    <ScrollView>
+        <StackLayout Orientation="Vertical" Padding="10" Spacing="10" >
 
-    <StackLayout Orientation="Vertical" Padding="20" Spacing="10" >
+            <Label TextColor="Black" FontSize="Large" x:Name="txtNomeUsuario" />
 
-        <Label TextColor="Black" FontSize="Large" x:Name="txtNomeUsuario" />
-        <Label Padding="10"/>
-        
-        <Label Text="Veículo" TextColor="Red" FontSize="Large"/>
+            <Label Text="Veículo" TextColor="Red" FontSize="Large"/>
         <Picker Title="Selecione o Veículo"  x:Name="picVeiculos"
         TitleColor="Red" FontSize="Large"
         ItemDisplayBinding="{Binding Placa}"
@@ -26,13 +25,12 @@
         ItemDisplayBinding="{Binding Nome}"
         SelectedItem="{Binding SelectedArea}" />
         
-        <Label Padding="5"  />
 
         <Label Text="Digite o KM do Odometro do Veículo" TextColor="Blue" FontSize="Large"/>
         <Entry x:Name="txtKm" FontSize="Large"  MaxLength="7" Placeholder="KM" Keyboard="Numeric" />
 
 
-        <Label Padding="10"  />
+        <Label Padding="5"  />
         
         <Button Command="{Binding SubmitCommand}" Text="Próximo" TextColor="White"
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill" VerticalOptions="End"
@@ -43,7 +41,8 @@
 
                                 />
     </StackLayout>
+        </ScrollView>
 
-  
-    
+
+
 </ContentPage>

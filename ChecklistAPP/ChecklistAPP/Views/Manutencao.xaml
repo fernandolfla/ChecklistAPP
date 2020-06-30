@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="ChecklistAPP.Views.Manutencao">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Padding="10" Spacing="10" >
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Padding="10" Spacing="10" >
 
             <Label TextColor="Black" FontSize="Large" Text="Lance a Manutenção Realizada" />
 
@@ -45,5 +46,6 @@
 
 
         </StackLayout>
-        </ContentPage.Content>
+            </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

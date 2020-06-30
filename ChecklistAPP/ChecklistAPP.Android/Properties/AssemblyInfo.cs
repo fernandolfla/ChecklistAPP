@@ -23,7 +23,7 @@ using System.Runtime.InteropServices;
 //      Minor Version 
 //      Build Number
 //      Revision
-[assembly: AssemblyVersion("1.20.4.0")]
+[assembly: AssemblyVersion("1.20.19.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 // Add some common permissions, these can be removed if not needed
